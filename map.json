@@ -1,0 +1,17 @@
+{
+	"/pjlink.1/shutter" : 	{
+		"target" : "pjlink.1",
+		"function" : "shutter"
+	}
+,
+	"/pjlink.2/shutter" : 	{
+		"target" : "pjlink.2",
+		"function" : "shutter"
+	}
+,
+	"/pjlink.3/shutter" : 	{
+		"target" : "pjlink.3",
+		"function" : "shutter"
+	}
+
+}
