@@ -19,10 +19,8 @@ The OSC-PKJlink project is available :
 
 # Licence
 ## Credits : 
-* *Written by Tom Mays & Renaud Rubiano - 2012*
+* *Written by Renaud Rubiano - 2012*
 * *Produced by didascalie.net*
-* *Based on some part of tapemovie (2006-2012)*
-* Launch span.maxhelp
 
 ## Copying
 … to be completed…
