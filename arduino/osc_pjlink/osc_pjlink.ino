@@ -56,7 +56,8 @@ void shutter(byte vp, OSCMessage *_mes) {
        if ( (ret == 0) || !vpClient[vp].connected() )
        {
           Serial.println("connection failed");
-         return;
+          vpClient[vp].connect(vpIp[vp], 4352);
+          return;
        }
        else {
       Serial.println("connected");
@@ -64,12 +65,10 @@ void shutter(byte vp, OSCMessage *_mes) {
     }
       if ( value == 1 ) {
       Serial.println();
-      Serial.println(vpClient[vp]);
       vpClient[vp].print("%1AVMT 31\r");
       }
       else {
       Serial.println();
-      Serial.println(vpClient[vp]);
       vpClient[vp].print("%1AVMT 30\r");
    }
 }
