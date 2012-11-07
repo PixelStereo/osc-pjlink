@@ -21,7 +21,13 @@ void setup() {
 void loop() { 
   // reception de messages OSC
   if(server.aviableCheck()>0) {
-  }
+  } 
+  for ( byte vp = 0 ; vp < 3 ; vp++ )
+  while ( vpClient[vp].available() )
+      {
+      char c = vpClient[vp].read();
+      Serial.print(c);
+      }
 }
 
 void shutter1(OSCMessage *_mes) {
