@@ -57,24 +57,24 @@ void shutter(byte vp, OSCMessage *_mes) {
     {
        // connexion au vp
        Serial.println("connecting...");
-       int ret = vpClient[vp].connected();
+       int ret = vpClient[vp].connect("vpIp[vp]",4352);
        if ( (ret == 0) || !vpClient[vp].connected() )
-       {
-          Serial.println("connection failed");
-         return;
-       }
+             {
+              Serial.println("connection failed");
+              return;
+             }
       Serial.println("connected");
-
-      if ( value == 1 ) {
-      Serial.println();
-      Serial.println("UN");
-      vpClient[vp].print("%1AVMT 31\r");
-      }
+    }
+    
+    if ( value == 1 ) {
+            Serial.println();
+            Serial.println("UN");
+            vpClient[vp].print("%1AVMT 31\r");
+            }
       else {
-      Serial.println();
-      Serial.println("ZERO");
-      vpClient[vp].print("%1AVMT 30\r");
-   }
-}
+            Serial.println();
+            Serial.println("ZERO");
+            vpClient[vp].print("%1AVMT 30\r");
+           }
 }
 
