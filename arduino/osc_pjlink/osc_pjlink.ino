@@ -56,7 +56,6 @@ void shutter(byte vp, OSCMessage *_mes) {
        if ( (ret == 0) || !vpClient[vp].connected() )
        {
           Serial.println("connection failed");
-          vpClient[vp].connect(vpIp[vp], 4352);
           return;
        }
        else {
