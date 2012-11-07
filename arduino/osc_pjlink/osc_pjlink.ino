@@ -65,9 +65,13 @@ void shutter(byte vp, OSCMessage *_mes) {
       if ( value == 1 ) {
       Serial.println();
       vpClient[vp].print("%1AVMT 31\r");
+      delay(2100);
+      vpClient[vp].stop();
       }
       else {
       Serial.println();
       vpClient[vp].print("%1AVMT 30\r");
+      delay(2100);
+      vpClient[vp].stop();
    }
 }
