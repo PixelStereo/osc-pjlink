@@ -3,12 +3,14 @@
 #include <ArdOSC.h>
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 byte ip[] = { 10, 0, 0, 10 };
-byte vp1[] = { 10, 0, 0, 11 }; 
-byte vp2[] = { 10, 0, 0, 12 }; 
-byte vp3[] = { 10, 0, 0, 13 }; 
+byte vpIp[3][4] = { { 10, 0, 0, 11 },  { 10, 0, 0, 12 },  { 10, 0, 0, 13 } } ;
 int serverPort = 10000;
-EthernetClient client;
+// EthernetClient client;
+EthernetClient vpClient[3];
 OSCServer server;
+
+
+
 
 void setup() {
   Ethernet.begin(mac, ip);
@@ -19,87 +21,60 @@ void setup() {
   server.addCallback("/pjlink.3/shutter",&shutter3);
   delay(1000);
   }
-
-void loop() { 
-  // reception de messages OSC
-    if(server.aviableCheck()>0){
-          }
-  if (client.available()) {
-    char c = client.read();
-    Serial.print(c);
-    }
-  }
-void shutter1(OSCMessage *_mes) {
-  //deconnection
-     client.stop();
-    int value = _mes->getArgInt32(0);
-    // connexion au vp
-     Serial.println("connecting...");
-        client.connect(vp1, 4352);
-    if (!client.connected()) {
-          Serial.println("connection failed");
-          return;
-          }
   
-    Serial.println("connected");
-  if(value == 1){
-      Serial.println();
-      Serial.println("UN");
-      client.print("%1AVMT 31\r");
+  
+  void loop() { 
+  // reception de messages OSC
+  if(server.aviableCheck()>0) {
   }
-  else{
-      Serial.println();
-      Serial.println("ZERO");
-      client.print("%1AVMT 30\r");
-   }
+
+  for ( byte vp = 0 ; vp < 3 ; vp++ )
+  while ( vpClient[vp].available() )
+    Serial.print(vpClient[vp]);
+}
+
+
+
+void shutter1(OSCMessage *_mes) {
+  shutter( 1, _mes );
 }
 
 void shutter2(OSCMessage *_mes) {
-  //deconnection
-     client.stop();
-    int value = _mes->getArgInt32(0);
-    // connexion au vp
-     Serial.println("connecting...");
-        client.connect(vp2, 4352);
-    if (!client.connected()) {
-          Serial.println("connection failed");
-          return;
-          }
-  
-    Serial.println("connected");
-  if(value == 1){
-      Serial.println();
-      Serial.println("UN");
-      client.print("%1AVMT 31\r");
-  }
-  else{
-      Serial.println();
-      Serial.println("ZERO");
-      client.print("%1AVMT 30\r");
-   }
+  shutter( 2, _mes );
 }
 
 void shutter3(OSCMessage *_mes) {
-  //deconnection
-     client.stop();
+  shutter( 3, _mes );
+}
+
+void shutter(byte vp, OSCMessage *_mes) {
+
+  --vp; // 1, 2, 3 => 0, 1, 2 pour index de tableau
+
     int value = _mes->getArgInt32(0);
-    // connexion au vp
-     Serial.println("connecting...");
-        client.connect(vp3, 4352);
-    if (!client.connected()) {
+
+    if ( ! vpClient[vp].connected() )
+    {
+       // connexion au vp
+       Serial.println("connecting...");
+       int ret = vpClient[vp].connected();
+       if ( (ret == 0) || !vpClient[vp].connected() )
+       {
           Serial.println("connection failed");
-          return;
-          }
-  
-    Serial.println("connected");
-  if(value == 1){
+         return;
+       }
+      Serial.println("connected");
+
+      if ( value == 1 ) {
       Serial.println();
       Serial.println("UN");
-      client.print("%1AVMT 31\r");
-  }
-  else{
+      vpClient[vp].print("%1AVMT 31\r");
+      }
+      else {
       Serial.println();
       Serial.println("ZERO");
-      client.print("%1AVMT 30\r");
+      vpClient[vp].print("%1AVMT 30\r");
    }
 }
+}
+
