@@ -4,13 +4,9 @@
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 byte ip[] = { 10, 0, 0, 10 };
 byte vpIp[3][4] = { { 10, 0, 0, 11 },  { 10, 0, 0, 12 },  { 10, 0, 0, 13 } } ;
-int serverPort = 10000;
-// EthernetClient client;
 EthernetClient vpClient[3];
+int serverPort = 10000;
 OSCServer server;
-
-
-
 
 void setup() {
   Ethernet.begin(mac, ip);
@@ -21,19 +17,12 @@ void setup() {
   server.addCallback("/pjlink.3/shutter",&shutter3);
   delay(1000);
   }
-  
-  
-  void loop() { 
+
+void loop() { 
   // reception de messages OSC
   if(server.aviableCheck()>0) {
   }
-
-  for ( byte vp = 0 ; vp < 3 ; vp++ )
-  while ( vpClient[vp].available() )
-    Serial.print(vpClient[vp]);
 }
-
-
 
 void shutter1(OSCMessage *_mes) {
   shutter( 1, _mes );
@@ -57,24 +46,24 @@ void shutter(byte vp, OSCMessage *_mes) {
     {
        // connexion au vp
        Serial.println("connecting...");
-       int ret = vpClient[vp].connect("vpIp[vp]",4352);
+       int ret = vpClient[vp].connect(vpIp[vp], 4352);
        if ( (ret == 0) || !vpClient[vp].connected() )
-             {
-              Serial.println("connection failed");
-              return;
-             }
+       {
+          Serial.println("connection failed");
+         return;
+       }
+       else {
       Serial.println("connected");
+       }
     }
-    
-    if ( value == 1 ) {
-            Serial.println();
-            Serial.println("UN");
-            vpClient[vp].print("%1AVMT 31\r");
-            }
+      if ( value == 1 ) {
+      Serial.println();
+      Serial.println(vpClient[vp]);
+      vpClient[vp].print("%1AVMT 31\r");
+      }
       else {
-            Serial.println();
-            Serial.println("ZERO");
-            vpClient[vp].print("%1AVMT 30\r");
-           }
+      Serial.println();
+      Serial.println(vpClient[vp]);
+      vpClient[vp].print("%1AVMT 30\r");
+   }
 }
-
