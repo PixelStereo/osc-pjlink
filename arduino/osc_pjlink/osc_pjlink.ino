@@ -55,21 +55,11 @@ void shutter(byte vp, OSCMessage *_mes) {
     }
       if ( value == 1 ) {
         vpClient[vp].print("%1AVMT 31\r");
-        while ( vpClient[vp].available() )
-           {         
-                char c = (vpClient[vp].read());
-                Serial.print(c);
-            }
-          vpClient[vp].stop();
+        vpClient[vp].stop();
       }
       else {
         vpClient[vp].print("%1AVMT 30\r");
-        while ( vpClient[vp].available() )
-           {         
-                char c = (vpClient[vp].read());
-                Serial.print(c);
-            }
-            vpClient[vp].stop();
+        vpClient[vp].stop();
       }
 }
 
