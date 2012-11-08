@@ -17,7 +17,7 @@ You need to setup your pjlink-device. Security has to be turned off.
 ## Change Log : 
 
 ### Version 0.0.1: 
-* Audio-Video mute command (%1AVMT 30/31) responds to /pjlink.1/shuter 0/1 /pjlink.2/shuter 0/1 /pjlink.3/shuter 0/1
+* Audio-Video mute command (%1AVMT 30/31) responds to /pjlink.1/shuter 0/1 /pjlink.2/shuter 0/1 /pjlink.3/shuter 0/1    
 ** *tested with Panasonic video-projector ptd 5100 - 5600 - 6870 - 730 - 740*
 
 # Licence
