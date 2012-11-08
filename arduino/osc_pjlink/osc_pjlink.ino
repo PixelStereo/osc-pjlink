@@ -21,21 +21,18 @@ void setup() {
 void loop() { 
   // reception de messages OSC
   if(server.aviableCheck()>0) {
-  } 
+      } 
 }
 
 void shutter1(OSCMessage *_mes) {
   shutter( 1, _mes );
 }
-
 void shutter2(OSCMessage *_mes) {
   shutter( 2, _mes );
 }
-
 void shutter3(OSCMessage *_mes) {
   shutter( 3, _mes );
 }
-
 void shutter(byte vp, OSCMessage *_mes) {
 
   --vp; // 1, 2, 3 => 0, 1, 2 pour index de tableau
@@ -59,17 +56,21 @@ void shutter(byte vp, OSCMessage *_mes) {
       if ( value == 1 ) {
         vpClient[vp].print("%1AVMT 31\r");
         while ( vpClient[vp].available() )
-           { char c = Serial.print(vpClient[vp].read());
-            Serial.print(c);}
-        vpClient[vp].stop();
+           {         
+                char c = (vpClient[vp].read());
+                Serial.print(c);
+            }
+          vpClient[vp].stop();
       }
       else {
         vpClient[vp].print("%1AVMT 30\r");
         while ( vpClient[vp].available() )
-            { char c = Serial.print(vpClient[vp].read());
-            Serial.print(c);}
+           {         
+                char c = (vpClient[vp].read());
+                Serial.print(c);
+            }
             vpClient[vp].stop();
-   }
+      }
 }
 
       
