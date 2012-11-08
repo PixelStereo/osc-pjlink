@@ -22,12 +22,6 @@ void loop() {
   // reception de messages OSC
   if(server.aviableCheck()>0) {
   } 
-  for ( byte vp = 0 ; vp < 3 ; vp++ )
-  while ( vpClient[vp].available() )
-      {
-      char c = vpClient[vp].read();
-      Serial.print(c);
-      }
 }
 
 void shutter1(OSCMessage *_mes) {
@@ -63,15 +57,21 @@ void shutter(byte vp, OSCMessage *_mes) {
        }
     }
       if ( value == 1 ) {
-      Serial.println();
-      vpClient[vp].print("%1AVMT 31\r");
-      delay(2100);
-      vpClient[vp].stop();
+        vpClient[vp].print("%1AVMT 31\r");
+        while ( vpClient[vp].available() )
+           { char c = Serial.print(vpClient[vp].read());
+            Serial.print(c);}
+        vpClient[vp].stop();
       }
       else {
-      Serial.println();
-      vpClient[vp].print("%1AVMT 30\r");
-      delay(2100);
-      vpClient[vp].stop();
+        vpClient[vp].print("%1AVMT 30\r");
+        while ( vpClient[vp].available() )
+            { char c = Serial.print(vpClient[vp].read());
+            Serial.print(c);}
+            vpClient[vp].stop();
    }
 }
+
+      
+      
+      
