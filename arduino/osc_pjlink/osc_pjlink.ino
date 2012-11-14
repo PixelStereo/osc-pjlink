@@ -177,19 +177,7 @@ void loop() {
 }
 /************* Fonctions ****************/
 
-//  Lire la valeur A/D retournée selon le bouton choisi
-int read_LCD_buttons()
-{
-    uint8_t buttons = lcd.readButtons();
-if (buttons) {
-  if (buttons & BUTTON_RIGHT) { return btnRIGHT; }
-  if (buttons & BUTTON_UP)  {return btnUP; }
-  if  (buttons & BUTTON_DOWN) { return btnDOWN; }
-  if (buttons & BUTTON_LEFT)  { return btnLEFT; }
-  if (buttons & BUTTON_SELECT) { return btnSELECT;   }
-}
- else { return btnNONE; } // si aucun appui sur bouton, on retoune la constante btnNONE ...
-}
+
 void shutter1(OSCMessage *_mes) {
   shutter( 1, _mes );
 }
@@ -222,6 +210,8 @@ void shutter(byte vp, OSCMessage *_mes) {
  char c = (vpClient[vp].read());
     if ( value == 1 ) {
         vpClient[vp].print("%1AVMT 31\r");
+         lcd.clear ();
+        lcd.print ("UN");
         Serial.print(c);
         while ( vpClient[vp].available() )
            {       
@@ -233,6 +223,8 @@ void shutter(byte vp, OSCMessage *_mes) {
     else {
         vpClient[vp].print("%1AVMT 30\r");
         Serial.print(c);
+        lcd.clear ();
+        lcd.print ("ZERO");
         while ( vpClient[vp].available() )
            {        
               lcd.setCursor(0,0);      // placer le curseur à la première ligne, première position 
@@ -241,4 +233,18 @@ void shutter(byte vp, OSCMessage *_mes) {
             vpClient[vp].stop();
       }
  
+}
+
+//  Lire la valeur A/D retournée selon le bouton choisi
+int read_LCD_buttons()
+{
+    uint8_t buttons = lcd.readButtons();
+if (buttons) {
+  if (buttons & BUTTON_RIGHT) { return btnRIGHT; }
+  if (buttons & BUTTON_UP)  {return btnUP; }
+  if  (buttons & BUTTON_DOWN) { return btnDOWN; }
+  if (buttons & BUTTON_LEFT)  { return btnLEFT; }
+  if (buttons & BUTTON_SELECT) { return btnSELECT;   }
+}
+ else { return btnNONE; } // si aucun appui sur bouton, on retoune la constante btnNONE ...
 }
