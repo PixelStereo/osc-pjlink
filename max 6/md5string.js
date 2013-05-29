@@ -183,7 +183,7 @@ function calcMD5(str)
 /* meta renaud 
   return rhex(a) + rhex(b) + rhex(c) + rhex(d);
 */
-	outlet(0, "MD5", rhex(a) + rhex(b) + rhex(c) + rhex(d)); 
+	outlet(0, rhex(a),rhex(b) ,rhex(c),rhex(d)); 
 	/* end meta renaud */
 
 }
