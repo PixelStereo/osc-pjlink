@@ -1,0 +1,33 @@
+#N canvas 116 675 555 325 10;
+#X declare -lib mrpeach;
+#X obj 215 -34 import mrpeach;
+#X obj 212 235 print;
+#X obj 30 76 packOSC;
+#X obj 212 201 unpackOSC;
+#X obj 30 11 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 28 166 udpsend;
+#X obj 28 199 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 43 136 disconnect;
+#X msg 45 104 connect 10.0.0.10 10000;
+#X msg 30 37 send /pjlink.1/shutter \$1;
+#X obj 211 176 udpreceive 12000;
+#X obj 202 12 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 374 11 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 202 36 send /pjlink.2/shutter \$1;
+#X msg 374 36 send /pjlink.3/shutter \$1;
+#X connect 2 0 5 0;
+#X connect 3 0 1 0;
+#X connect 4 0 9 0;
+#X connect 5 0 6 0;
+#X connect 7 0 5 0;
+#X connect 8 0 5 0;
+#X connect 9 0 2 0;
+#X connect 10 0 3 0;
+#X connect 11 0 13 0;
+#X connect 12 0 14 0;
+#X connect 13 0 2 0;
+#X connect 14 0 2 0;
