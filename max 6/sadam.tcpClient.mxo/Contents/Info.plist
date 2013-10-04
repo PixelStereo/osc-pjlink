@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildMachineOSBuild</key>
+	<string>10K549</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>sadam.tcpClient</string>
+	<key>CFBundleIdentifier</key>
+	<string>hu.sadam.tcpClient</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleLongVersionString</key>
+	<string>sadam.tcpClient 5.1.7, Copyright 2009-2012 Siska Ádám</string>
+	<key>CFBundlePackageType</key>
+	<string>iLaX</string>
+	<key>CFBundleShortVersionString</key>
+	<string>5.1.7</string>
+	<key>CFBundleSignature</key>
+	<string>max2</string>
+	<key>CFBundleVersion</key>
+	<string>5.1.7</string>
+	<key>CSResourcesFileMapped</key>
+	<true/>
+	<key>DTCompiler</key>
+	<string>4.0</string>
+	<key>DTPlatformBuild</key>
+	<string>4A2002a</string>
+	<key>DTPlatformVersion</key>
+	<string>GM</string>
+	<key>DTSDKBuild</key>
+	<string>8S2167</string>
+	<key>DTSDKName</key>
+	<string>macosx10.4</string>
+	<key>DTXcode</key>
+	<string>0402</string>
+	<key>DTXcodeBuild</key>
+	<string>4A2002a</string>
+</dict>
+</plist>
