@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 28.0, 120.0, 610.0, 572.0 ],
+		"rect" : [ 483.0, 219.0, 610.0, 572.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,37 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
+					"frgb" : 0.0,
+					"id" : "obj-3",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 382.5, 66.0, 150.0, 38.0 ],
+					"presentation_rect" : [ 387.0, 69.5, 0.0, 0.0 ],
+					"text" : "3 - SAVE THE PATCH AND RE_OPEN IT"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
+					"frgb" : 0.0,
+					"id" : "obj-1",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 214.0, 45.0, 104.0, 22.0 ],
+					"presentation_rect" : [ 215.0, 43.5, 0.0, 0.0 ],
+					"text" : "1- CHANGE IP"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -121,7 +152,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 299.0, 239.5, 32.5, 18.0 ],
-					"presentation_rect" : [ 308.5, 137.0, 0.0, 0.0 ],
 					"text" : "0"
 				}
 
@@ -195,7 +225,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 511.0, 396.5, 61.0, 25.0 ],
-					"presentation_rect" : [ 499.0, 328.0, 0.0, 0.0 ],
 					"text" : "\"%1AVMT ?\r\""
 				}
 
@@ -211,7 +240,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 299.0, 397.5, 67.0, 25.0 ],
-					"presentation_rect" : [ 453.0, 148.0, 0.0, 0.0 ],
 					"text" : "\"%1AVMT 30\r\""
 				}
 
@@ -304,14 +332,15 @@
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 10.0,
+					"fontsize" : 14.0,
 					"frgb" : 0.0,
 					"id" : "obj-29",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 173.0, 208.5, 68.0, 18.0 ],
-					"text" : "PASSWORD"
+					"patching_rect" : [ 171.0, 198.5, 96.0, 38.0 ],
+					"text" : "2 - CHANGE PASSWORD"
 				}
 
 			}
