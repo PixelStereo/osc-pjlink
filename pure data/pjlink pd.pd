@@ -1,4 +1,4 @@
-#N canvas 1248 200 353 310 10;
+#N canvas 845 40 353 310 10;
 #X declare -lib mrpeach -lib tcpsend;
 #X floatatom 94 241 3 0 0 0 - - -;
 #X floatatom 121 241 3 0 0 0 - - -;
@@ -13,12 +13,12 @@
 #X obj 94 214 unpack 0 0 0 0 0;
 #X obj 177 158 import mrpeach tcpsend;
 #X obj 43 154 tcpreceive 4352;
-#X msg 40 37 connect 10.0.0.11 4352;
 #X obj 39 112 tgl 15 0 empty empty connected 20 7 0 8 -24198 -241291
--1 1 1;
+-1 0 1;
 #X msg 206 64 send "%1AVMT 30 ";
 #X obj 39 81 tcpsend;
 #X msg 204 38 "%1AVMT 31";
+#X msg 40 37 connect 10.0.0.100 4352;
 #X connect 10 0 0 0;
 #X connect 10 1 1 0;
 #X connect 10 2 2 0;
@@ -27,7 +27,7 @@
 #X connect 12 0 5 0;
 #X connect 12 1 10 0;
 #X connect 12 2 6 0;
-#X connect 13 0 16 0;
-#X connect 15 0 16 0;
-#X connect 16 0 14 0;
-#X connect 17 0 16 0;
+#X connect 14 0 15 0;
+#X connect 15 0 13 0;
+#X connect 16 0 15 0;
+#X connect 17 0 15 0;
